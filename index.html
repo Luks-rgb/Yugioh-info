@@ -1,351 +1,1165 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Yu-Gi-Oh! Central Hub</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
   <style>
+
     :root {
+
       --primary: #d90429;
+
       --background: #0b0c10;
+
       --card-bg: #1f2833;
+
       --text: #ffffff;
+
       --accent: #66fcf1;
+
     }
+
+
 
     body {
+
       margin: 0;
+
       padding: 0;
+
       font-family: 'Orbitron', sans-serif;
+
       background-color: var(--background);
+
       color: var(--text);
+
     }
+
+
 
     .container {
+
       max-width: 1200px;
+
       margin: auto;
+
       padding: 30px 20px;
+
     }
+
+
 
     h1 {
+
       text-align: center;
+
       font-size: 3rem;
+
       margin-bottom: 30px;
+
       color: var(--accent);
+
       text-shadow: 1px 1px 4px #000;
+
     }
+
+
 
     h2.section-title {
+
       margin-top: 40px;
+
       font-size: 2rem;
+
       color: var(--primary);
+
       border-bottom: 2px solid var(--accent);
+
       padding-bottom: 5px;
+
     }
+
+
 
     nav {
+
       display: flex;
+
       justify-content: center;
+
       gap: 20px;
+
       margin-bottom: 30px;
+
       flex-wrap: wrap;
+
     }
+
+
 
     nav button {
+
       background: transparent;
+
       border: 2px solid var(--accent);
+
       padding: 10px 20px;
+
       color: var(--accent);
+
       cursor: pointer;
+
       transition: 0.3s;
+
       border-radius: 8px;
+
       font-size: 1rem;
+
     }
+
+
 
     nav button:hover, nav button.active {
+
       background-color: var(--accent);
+
       color: var(--background);
+
     }
+
+
 
     .tab {
+
       display: none;
+
       animation: fadeIn 0.5s ease-in-out;
+
     }
+
+
 
     .tab.active {
+
       display: block;
+
     }
+
+
 
     .card {
+
       background-color: var(--card-bg);
+
       padding: 20px;
+
       border-radius: 12px;
+
       margin-bottom: 25px;
+
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+
       transition: transform 0.3s;
+
       display: flex;
+
       gap: 20px;
+
       align-items: center;
+
       flex-wrap: wrap;
+
     }
+
+
 
     .card:hover {
+
       transform: scale(1.02);
+
     }
+
+
 
     .card img {
+
       width: 260px;
+
       height: auto;
+
       border-radius: 10px;
+
       object-fit: cover;
+
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
+
       transition: transform 0.3s ease;
+
     }
+
+
 
     .card img:hover {
+
       transform: scale(1.4);
+
       z-index: 10;
+
     }
+
+
 
     .card h2 {
+
       margin-top: 0;
+
       color: var(--primary);
+
     }
+
+
 
     .card-content {
+
       flex: 1;
+
       min-width: 250px;
+
     }
+
+
 
     .deck-button {
+
       margin-top: 10px;
+
       padding: 8px 16px;
+
       border: none;
+
       background-color: var(--accent);
+
       color: var(--background);
+
       border-radius: 6px;
+
       font-size: 0.9rem;
+
       cursor: pointer;
+
       transition: 0.3s;
+
     }
+
+
 
     .deck-button:hover {
+
       background-color: var(--primary);
+
       color: white;
+
     }
+
+
 
     .deck-gallery {
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 20px;
+
       padding: 20px;
+
       background-color: var(--card-bg);
+
       border-radius: 12px;
+
     }
+
+
 
     .deck-gallery img {
+
       width: 260px;
+
       height: auto;
+
       border-radius: 8px;
+
       transition: transform 0.3s ease;
+
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
+
     }
+
+
 
     .deck-gallery img:hover {
+
       transform: scale(1.4);
+
       z-index: 10;
+
     }
+
+
 
     @keyframes fadeIn {
+
       from { opacity: 0; transform: translateY(10px); }
+
       to { opacity: 1; transform: translateY(0); }
+
     }
+
+
 
     @media (max-width: 700px) {
+
       h1 { font-size: 2rem; }
+
       nav { flex-direction: column; gap: 10px; }
+
       .card { flex-direction: column; align-items: flex-start; }
+
       .card img { width: 100%; max-width: 350px; }
+
     }
+
   </style>
+
 </head>
+
 <body>
+
   <div class="container">
+
     <h1>Yu-Gi-Oh! Customized</h1>
+
     <nav>
+
       <button onclick="showTab('champions')" class="active">Campeões</button>
+
       <button onclick="showTab('banlist')">Banlist</button>
+
     </nav>
 
+
+
     <div id="champions" class="tab active">
+
       <div class="card">
+
         <img src="Alexandro.jpeg" alt="Alek">
+
         <div class="card-content">
+
           <h2>2025</h2>
+
           <p>Campeão: Alek</p>
+
           <p>Deck: Hunter X Hunter</p>
+
           <button class="deck-button" onclick="openDeck('Alek')">Ver Deck Completo</button>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="lucas.jpeg" alt="Lucas">
+
         <div class="card-content">
+
           <h2>2024</h2>
+
           <p>Campeão: Lucas</p>
+
           <p>Deck: Zueira</p>
+
           <button class="deck-button" onclick="openDeck('Lucas')">Ver Deck Completo</button>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="alek.jpeg" alt="Alek">
+
         <div class="card-content">
+
           <h2>2019</h2>
+
           <p>Campeão: Alek</p>
+
           <p>Deck: Memes</p>
+
           <button class="deck-button" onclick="openDeck('Alek')">Ver Deck Completo</button>
+
         </div>
+
       </div>
+
     </div>
 
+
+
     <div id="banlist" class="tab">
+
       <h2 class="section-title">Cartas Banidas</h2>
+
       <div class="card">
+
         <img src="reversão de feitiço_vermelho 2 copias.jpeg" alt="reversão de feitiço_vermelho">
+
         <div class="card-content">
+
           <h2>Reversão de Feitiço Vermelho</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Barto 3 cópias.jpeg" alt="Barto">
+
         <div class="card-content">
+
           <h2>El Barto</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Urubu 3 cópias.jpeg" alt="Urubu">
+
         <div class="card-content">
+
           <h2>Urubu do Pix</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="deixa ele goza 1 copia.jpeg" alt="deixa ele gozar">
+
         <div class="card-content">
+
           <h2>Deixa ele Goza</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Full 1 cópias.jpeg" alt="Full Counter">
+
         <div class="card-content">
+
           <h2>Full Counter</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Bomba.jpeg" alt="Bomba">
+
         <div class="card-content">
+
           <h2>Bomba de Hiroshima Negrosaki</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="antonio prime 3 copia.jpeg" alt="antonio">
+
         <div class="card-content">
+
           <h2>Antonio Prime</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="amplificaçao de feitiço_azul 2 copia.jpeg" alt="amplificaçao">
+
         <div class="card-content">
+
           <h2>Amplificaçao de Feitiço Azul</h2>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Passando o Hack 2 cópias.jpeg" alt="passando o hack">
+
         <div class="card-content">
+
           <h2>Passando o Hack</h2>
+
         </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Coração das Cartas - 2.jpeg" alt="Coração">
+
+        <div class="card-content">
+
+          <h2>Coração das Cartas</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Faz xiu 3 cópias.jpeg" alt="Faz xiu Ae">
+
+        <div class="card-content">
+
+          <h2>Faz Xiu Aê</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Rei do Buteco Mamalek 3 cópias.jpeg" alt="Rei do Buteco">
+
+        <div class="card-content">
+
+          <h2>Rei do Buteco Mamalek</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Kokushibo - Lua Superior 1 - 2.jpeg" alt="Kokushibo">
+
+        <div class="card-content">
+
+          <h2>Kokushibo - Lua Superior 1</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Hantengu - Lua Superior 4 - 2.jpeg" alt="Hantengu">
+
+        <div class="card-content">
+
+          <h2>Hantengu - Lua Superior 4</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Urahara.jpeg" alt="Urahara">
+
+        <div class="card-content">
+
+          <h2>Urahara</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="ichibei.jpeg" alt="ichibei">
+
+        <div class="card-content">
+
+          <h2>Yosube Ichibei</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Gotei 13.jpeg" alt="Gotei">
+
+        <div class="card-content">
+
+          <h2>Gotei 13</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Eu rejeito.jpeg" alt="Eu rejeito">
+
+        <div class="card-content">
+
+          <h2>Eu Rejeito</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Quebre kyôka Suigetsu.jpeg" alt="Quebre">
+
+        <div class="card-content">
+
+          <h2>Quebre Kyôka Suigetsu</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Bankai.jpeg" alt="Bankai">
+
+        <div class="card-content">
+
+          <h2>Bankai: Sakashima Yokoshima Happôfusagari</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Cara.jpeg" alt="Cara">
+
+        <div class="card-content">
+
+          <h2>Característica Nen</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Forma.jpeg" alt="Forma">
+
+        <div class="card-content">
+
+          <h2>Forma da Aura</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="gon.jpeg" alt="gon">
+
+        <div class="card-content">
+
+          <h2>Gon Frecss</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Greed.jpeg" alt="Greed">
+
+        <div class="card-content">
+
+          <h2>Greed Card</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="guo.jpeg" alt="guo">
+
+        <div class="card-content">
+
+          <h2>Tseriidnich Hui Guo Rou</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="gyng.jpeg" alt="gyng">
+
+        <div class="card-content">
+
+          <h2>Gyng Frecss</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="gyro.jpeg" alt="gyro">
+
+        <div class="card-content">
+
+          <h2>Gyro</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="hisoka.jpeg" alt="hisoka">
+
+        <div class="card-content">
+
+          <h2>Hisoka Morrow</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="killua.jpeg" alt="killua">
+
+        <div class="card-content">
+
+          <h2>Killua Zoldyck</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="leo.jpeg" alt="leo">
+
+        <div class="card-content">
+
+          <h2>Leorio Paradnight</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Mereoleon.jpeg" alt="Mereoleon">
+
+        <div class="card-content">
+
+          <h2>Mereoleon</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="morena.jpeg" alt="morena">
+
+        <div class="card-content">
+
+          <h2>Morena Prudo</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Nefer.jpeg" alt="Nefer">
+
+        <div class="card-content">
+
+          <h2>Neferpitou</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Nen.jpeg" alt="nen">
+
+        <div class="card-content">
+
+          <h2>Nen de Reforço</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="nete.jpeg" alt="nete">
+
+        <div class="card-content">
+
+          <h2>Issac Netero</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="part.jpeg" alt="part">
+
+        <div class="card-content">
+
+          <h2>Partitura da Morte</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="poder.jpeg" alt="poder">
+
+        <div class="card-content">
+
+          <h2>Poder Oculto</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Retorno.jpeg" alt="Retorno">
+
+        <div class="card-content">
+
+          <h2>Retorno Incerto</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Segredo.jpeg" alt="Segredo">
+
+        <div class="card-content">
+
+          <h2>Segredo do Bandido</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="vasto.jpeg" alt="Vasto">
+
+        <div class="card-content">
+
+          <h2>Vasto Mundo</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Zeno.jpeg" alt="Zeno">
+
+        <div class="card-content">
+
+          <h2>Zeno Zoldyck</h2>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="zona.jpeg" alt="Zona">
+
+        <div class="card-content">
+
+          <h2>Zona de Experimento</h2>
+
+        </div>
+
       </div>
 
       <h2 class="section-title">Cartas Metas</h2>
-      <div class="card">
-        <img src="Coração das Cartas - 2.jpeg" alt="Coração">
-        <div class="card-content">
-          <h2>Coração das Cartas</h2>
-          <p>Status: 2 Cópias</p>
-        </div>
-      </div>
-      <div class="card">
+
+            <div class="card">
+
         <img src="Destruição Planetária.jpeg" alt="Destruição Planetária">
+
         <div class="card-content">
+
           <h2>Destruição Planetária</h2>
+
           <p>Status: 1 Cópia</p>
+
         </div>
+
       </div>
-      <div class="card">
-        <img src="Faz xiu 3 cópias.jpeg" alt="Faz xiu Ae">
-        <div class="card-content">
-          <h2>Faz Xiu Aê</h2>
-          <p>Status: 1 Cópia</p>
-        </div>
-      </div>
-      <div class="card">
+
+            <div class="card">
+
         <img src="Cancelamento.jpeg" alt="Cancelamento">
+
         <div class="card-content">
+
           <h2>Cancelamento</h2>
+
           <p>Status: 1 Cópia</p>
+
         </div>
+
       </div>
+
       <div class="card">
+
         <img src="Refletor Uchiha.jpeg" alt="Refletor">
+
         <div class="card-content">
+
           <h2>Refletor Uchiha</h2>
+
           <p>Status: 1 Cópia</p>
+
         </div>
+
       </div>
+
+      <div class="card">
+
+        <img src="Hantengu - Corpo Principal - 3.jpeg" alt="hantengu">
+
+        <div class="card-content">
+
+          <h2>Hantengu - Corpo Principal</h2>
+
+          <p>Status: 3 Cópias</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Bakudou.jpeg" alt="Bakudou">
+
+        <div class="card-content">
+
+          <h2>Bakudou 81: Danku</h2>
+
+          <p>Status: 1 Cópia</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Jigo.jpeg" alt="Jigo">
+
+        <div class="card-content">
+
+          <h2>Jigokuchô</h2>
+
+          <p>Status: 1 Cópias</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Hirako.jpeg" alt="Hirako">
+
+        <div class="card-content">
+
+          <h2>Hirako Shinji</h2>
+
+          <p>Status: 2 Cópias</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="melon.jpeg" alt="melon">
+
+        <div class="card-content">
+
+          <h2>Melon Musk</h2>
+
+          <p>Status: 2 Cópias</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="nggs.jpeg" alt="Nigga">
+
+        <div class="card-content">
+
+          <h2>Spyder Nigga</h2>
+
+          <p>Status: 1 Cópias</p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="ultimo.jpeg" alt="ultimo">
+
+        <div class="card-content">
+
+          <h2>Ultimo Recurso</h2>
+
+          <p>Status: 1 Cópias</p>
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 
+
+
   <script>
+
     function showTab(tabId) {
+
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
       document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+
       document.getElementById(tabId).classList.add('active');
+
       document.querySelectorAll('nav button').forEach(btn => {
+
         if (btn.textContent.toLowerCase().includes(tabId)) {
+
           btn.classList.add('active');
+
         }
+
       });
+
     }
 
+
+
     function openDeck(champion) {
+
       const win = window.open("", "_blank");
+
       win.document.write(`
+
         <html>
+
         <head>
+
           <title>Deck de ${champion}</title>
+
           <style>
+
             body { background-color: #0b0c10; color: white; font-family: 'Orbitron', sans-serif; padding: 20px; }
+
             h1 { color: #66fcf1; text-align: center; }
+
             .deck-gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
             .deck-gallery img { width: 260px; height: auto; border-radius: 8px; transition: transform 0.3s ease; box-shadow: 0 0 8px rgba(0,0,0,0.4); }
+
             .deck-gallery img:hover { transform: scale(1.4); z-index: 10; }
+
           </style>
+
         </head>
+
         <body>
+
           <h1>Deck de ${champion}</h1>
+
           <div class="deck-gallery">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+1" alt="Carta 1">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+2" alt="Carta 2">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+3" alt="Carta 3">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+4" alt="Carta 4">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+5" alt="Carta 5">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+6" alt="Carta 6">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+7" alt="Carta 7">
+
             <img src="https://via.placeholder.com/260x360?text=Carta+8" alt="Carta 8">
+
           </div>
+
         </body>
+
         </html>
+
       `);
+
     }
+
   </script>
+
 </body>
+
 </html>
